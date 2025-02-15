@@ -1,0 +1,79 @@
+.product-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    
+  }
+  .product{
+    margin-top: 8px;
+    margin-bottom: 8px;
+  }
+  
+  .product-card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 16px;
+    width: 200px;
+    text-align: center;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+  }
+  .card-body img{
+    height: 250px;
+    width: 250px;
+    
+  }
+  .btn-bg-yellow{
+    background-color: rgb(235, 235, 5);
+    color: black;
+    border-radius: 10%;
+    
+  }
+  
+  .product-card img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+  }
+  
+  button {
+    background: #ffcc00;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  .card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 10px;
+    overflow: hidden;
+    background: #fff;
+}
+
+/* Card hover effect */
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Image zoom effect */
+.card img {
+    transition: transform 0.3s ease;
+}
+
+.card:hover img {
+    transform: scale(1.1);
+}
+
+/* Button hover effect */
+.card .btn {
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.card:hover .btn {
+    transform: translateY(-3px);
+    background-color: #ffcc00; /* Slightly lighter yellow */
+}
+
+  

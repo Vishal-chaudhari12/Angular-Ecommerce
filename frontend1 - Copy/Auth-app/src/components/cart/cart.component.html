@@ -1,0 +1,32 @@
+<div class="cart">
+  <h2>Your Cart</h2>
+  <div *ngIf="cartItems.length === 0">Your cart is empty.</div>
+
+  <div *ngFor="let item of cartItems; trackBy: trackById" class="cart-item">
+    <img [src]="item.product.image" alt="Product Image" class="cart-img" />
+    <div>
+      <p><strong>{{ item.product.title }}</strong></p>
+      <p>Price: ${{ item.product.price }}</p>
+
+      <!-- Dropdown for quantity selection -->
+      <label for="quantity">Quantity:</label>
+      <select id="quantity" [(ngModel)]="item.quantity" (change)="updateQuantity(item.product.id, item.quantity)">
+        <option *ngFor="let qty of [1,2,3,4,5]" [value]="qty">{{ qty }}</option>
+      </select>
+    </div>
+
+    <button (click)="removeFromCart(item.product.id)" class="btn btn-danger btn-sm">
+      Remove
+    </button>
+  </div>
+
+  <!-- Bill Summary -->
+  <div *ngIf="cartItems.length > 0" class="bill-summary">
+    <h3>Bill Summary</h3>
+    <p><strong>Total Items:</strong> {{ cartItems.length }}</p>
+    <p><strong>Total Amount:</strong> ${{ totalAmount.toFixed(2) }}</p>
+
+    <!-- Pay Bill Button -->
+    <button class="btn btn-success btn-lg" (click)="goToPayment()">Pay Bill</button>
+  </div>
+</div>

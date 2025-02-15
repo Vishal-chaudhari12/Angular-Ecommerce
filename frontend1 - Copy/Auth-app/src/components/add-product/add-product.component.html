@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="col-4 product-card" [@fadeIn]>
+    <div class="card">
+      <div class="card-header">
+        <h5>Add Product</h5>
+      </div>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-12">
+            <label for="">Name</label>
+            <input type="text" [(ngModel)]="productObj.productName" class="form-control">
+          </div>
+          <div class="col-12">
+            <label for="">Description</label>
+            <input type="text" [(ngModel)]="productObj.productDiscription" class="form-control">
+          </div>
+          <div class="col-12">
+            <label for="">Price</label>
+            <input type="number" [(ngModel)]="productObj.productPrice" class="form-control">
+          </div>
+          <div class="col-12">
+            <label for="">Image URL</label>
+            <input type="text" [(ngModel)]="productObj.productImg" class="form-control">
+          </div>
+        </div>
+        <div class="button-container">
+          <button (click)="onSaveProduct()" class="btn btn-primary">Save Product</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

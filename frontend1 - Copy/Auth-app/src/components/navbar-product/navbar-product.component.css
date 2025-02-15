@@ -1,0 +1,48 @@
+/* Custom Navbar */
+.custom-navbar {
+  
+    padding: 10px 0;
+}
+
+/* Centering the Navbar Content */
+.navbar .container {
+    display: flex;
+    justify-content: center;
+    margin-top: 1%;
+    margin-bottom: 1%;
+    border-radius: 20px;
+}
+
+/* Centering the Navbar Items */
+.navbar-nav {
+    display: flex;
+    justify-content: center;
+    border-radius: 20px;
+    width: 50%;
+}
+
+/* Navbar Links Styling */
+.navbar-nav .nav-link {
+    color: rgb(255, 251, 251) !important;
+    font-size: 18px;
+    padding: 10px 20px;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Hover Effect */
+.navbar-nav .nav-link:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+}
+
+/* Navbar Toggler Button */
+.navbar-toggler {
+    border-color: white;
+}
+
+.navbar-toggler-icon {
+    filter: invert(1); /* Makes the toggler icon white */
+}
+.nav-item{
+    background-color: rgb(192, 97, 224);
+}

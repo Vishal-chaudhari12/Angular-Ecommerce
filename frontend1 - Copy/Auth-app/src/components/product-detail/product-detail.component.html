@@ -1,0 +1,23 @@
+<div class="container">
+  <div *ngIf="product" class="row">
+    <div class="col-12">
+      <div class="product-detail text-center">
+        <h2>Product Detail</h2>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="product" class="row">
+    <div class="col-lg-6 offset-lg-3">
+      <div class="card shadow">
+        <div class="card-body">
+          <p><strong>Category:</strong> {{ product?.category }}</p>
+          <p><strong>Title:</strong> {{ product?.title }}</p>
+          <p><strong>Price:</strong> {{ product?.price }}</p>
+          <p><strong>Description:</strong> {{ product?.description }}</p>
+          <img [src]="product?.image" alt="Product Image" class="img-fluid" style="max-height: 300px; object-fit: contain;" />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

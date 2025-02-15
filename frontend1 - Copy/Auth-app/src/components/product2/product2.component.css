@@ -1,0 +1,29 @@
+.card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Image zoom effect */
+.card img {
+    transition: transform 0.3s ease;
+}
+
+.card:hover img {
+    transform: scale(1.1);
+}
+
+/* Button hover effect */
+.card .btn {
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.card:hover .btn {
+    transform: translateY(-3px);
+    background-color: #ffcc00; /* Slightly lighter yellow */
+}

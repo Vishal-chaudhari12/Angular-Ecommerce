@@ -5,6 +5,7 @@ const User = require("../model/user");
 require("dotenv").config();
 const Product= require("../model/product");
 const admin = require("../model/admin");
+const seller = require("../model/seller");
 
 
 
@@ -233,6 +234,70 @@ router.post("/login-admin", async (req, res) => {
     return res.status(200).json({
       message: "Admin Login successful",
       login: { name: admin1.name, email: admin1.email },
+    });
+  } catch (error) {
+    return res.status(500).json({ message: "Internal server error", error: error.message });
+  }
+});
+
+
+router.get("/admins", async (req, res) => {
+  try {
+    const admin1 = await admin.find(); // Assuming Product is your Mongoose model
+    return res.status(200).json(admin1);
+  } catch (error) {
+    return res.status(500).json({ message: "Internal server error", error: error.message });
+  }
+});
+
+
+router.post("/seller", async (req, res) => {
+  try {
+    let { id,mobNo,deptName,email, password, name,licenceNo ,address} = req.body;
+
+    const record = await seller.findOne({ email });
+    if (record) {
+      return res.status(400).json({ message: "Email is already registered" });
+    }
+
+    // Create new user with plain text password (not secure for real apps)
+    const seller1 = new seller({ id,name,mobNo, email,deptName, password ,licenceNo ,address});
+    console.log(admin, "Seller saved in db");
+    const result = await seller1.save();
+
+    return res.status(201).json({
+      message: "Seller registered successfully",
+      admin: { name: result.name, email: result.email, mobNo: result.mobNo,deptName: result.deptName,id: result.id , licenceNo:result.licenceNo ,address:result.address},
+    });
+  } catch (error) {
+    return res.status(500).json({ message: "Internal server error", error: error.message });
+  }
+});
+
+router.get("/sellers", async (req, res) => {
+  try {
+    const seller1 = await seller.find(); // Assuming Seller is your Mongoose model
+    return res.status(200).json(seller1);
+  } catch (error) {
+    return res.status(500).json({ message: "Internal server error", error: error.message });
+  }
+});
+
+router.post("/login-seller", async (req, res) => {
+  try {
+    const { email, password } = req.body;
+    if (!email || !password) {
+      return res.status(400).json({ message: "Missing email or password" });
+    }
+
+    const seller1 = await seller.findOne({ email });
+    if (!seller1 || seller1.password !== password) {
+      return res.status(401).json({ message: "Invalid credentials" });
+    }
+
+    return res.status(200).json({
+      message: "Sellar Login successful",
+      login: { name: seller1.name, email: seller1.email },
     });
   } catch (error) {
     return res.status(500).json({ message: "Internal server error", error: error.message });

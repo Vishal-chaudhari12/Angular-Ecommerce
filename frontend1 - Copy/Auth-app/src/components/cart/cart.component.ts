@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { CardService } from '../../../service/card.service';
 import { Router } from '@angular/router';
 import { FormsModule, NgModelGroup } from '@angular/forms';
-import { Product2 } from '../../../service/product2.service';
+
 
 @Component({
   selector: 'app-cart',

@@ -2,59 +2,76 @@ import { Component } from '@angular/core';
 import { AuthService } from '../../../service/auth.service';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css'], 
+  styleUrls: ['./register.component.css'],
   imports: [FormsModule]
 })
 export class RegisterComponent {
-  user = { name: '', email: '', password: '',conformpassword:'' };
-  message: string = '';
+  user = { name: '', email: '', password: '', conformpassword: '' };
   loading: boolean = false;
 
   constructor(private authService: AuthService, private router: Router) {}
 
   onSubmit() {
-
     if (!this.user.name || !this.user.email || !this.user.password) {
-     alert( this.message = 'Please fill out all fields.');
+      Swal.fire('Error', 'Please fill out all fields.', 'error');
       return;
     }
 
     if (this.user.password !== this.user.conformpassword) {
-      alert(this.message = 'Passwords and Conform pass do not match!');
+      Swal.fire('Error', 'Passwords do not match!', 'error');
       return;
     }
 
     if (this.user.name.length > 10) {
-      alert(this.message = 'Name should be at least 10 characters long.');
+      Swal.fire('Error', 'Name should be at most 10 characters long.', 'error');
       return;
     }
 
     if (!this.user.email.includes('@')) {
-      alert(this.message = 'Please enter a valid email address with "@" symbol.');
+      Swal.fire('Error', 'Please enter a valid email address.', 'error');
       return;
     }
-    
+
     const passwordRegex = /^(?=.*[0-9])(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{4,}$/;
     if (!passwordRegex.test(this.user.password)) {
-      alert(this.message = 'Password must be at least 4 characters long, include at least 1 number and 1 special character (!@#$%^&*).');
+      Swal.fire(
+        'Error',
+        'Password must be at least 4 characters long and include at least 1 number and 1 special character (!@#$%^&*).',
+        'error'
+      );
       return;
     }
 
     this.loading = true;
+    Swal.fire({
+      title: 'Registering...',
+      text: 'Please wait while we create your account',
+      allowOutsideClick: false,
+      didOpen: () => {
+        Swal.showLoading();
+      }
+    });
+
     this.authService.registerUser(this.user).subscribe(
       (response: any) => {
-        this.message = 'User registered successfully!';
-        alert('Registered successfully!');
-        // console.log(response);
+        Swal.close();
+        Swal.fire({
+          title: 'Registration Successful!',
+          text: 'You have been registered successfully.',
+          icon: 'success',
+          timer: 2000,
+          showConfirmButton: false
+        });
         this.router.navigate(['/login']);
       },
       (error: any) => {
-        alert(this.message = error.error?.message || 'An error occurred while registering.');
-        console.error(error);
+        Swal.close();
+        Swal.fire('Error', error.error?.message || 'An error occurred while registering.', 'error');
       },
       () => {
         this.loading = false;

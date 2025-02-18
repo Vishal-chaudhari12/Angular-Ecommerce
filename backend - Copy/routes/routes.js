@@ -184,6 +184,28 @@ router.get("/products", async (req, res) => {
   }
 });
 
+router.delete("/product/:productName", async (req, res) => {
+  try {
+    const { productName } = req.params;
+    
+    // Find and delete the product by name
+    const result = await Product.findOneAndDelete({ productName });
+
+    if (!result) {
+      return res.status(404).json({ message: "Product not found" });
+    }
+
+    return res.status(200).json({ 
+      message: "Product deleted successfully", 
+      deletedProduct: result 
+    });
+
+  } catch (error) {
+    return res.status(500).json({ message: "Internal server error", error: error.message });
+  }
+});
+
+
 
 // Admin Routes
 
@@ -250,6 +272,8 @@ router.get("/admins", async (req, res) => {
   }
 });
 
+
+//Seller Section
 
 router.post("/seller", async (req, res) => {
   try {

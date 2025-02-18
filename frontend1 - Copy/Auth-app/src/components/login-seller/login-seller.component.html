@@ -1,0 +1,22 @@
+<div class="container">
+    <div class="right-side">
+      <form [@fadeIn]>
+        <h2>Admin Login</h2>
+  
+        <div class="form-group">
+          <input type="email" [(ngModel)]="sellerObj.email" name="email" placeholder="Email" required />
+        </div>
+  
+        <div class="form-group">
+          <input type="password" [(ngModel)]="sellerObj.password" name="password" placeholder="Password" required />
+        </div>
+  
+        <button type="button" (click)="onadminLogin()">Login</button>
+  
+        <div>
+          <p>Don`have an account?<a href="/register-seller">Register Seller</a></p>
+        </div>
+  
+      </form>
+    </div>
+  </div>

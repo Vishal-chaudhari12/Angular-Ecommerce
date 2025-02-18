@@ -14,6 +14,9 @@ import { AdminComponent } from '../components/admin/admin.component';
 import { AdminLoginComponent } from '../components/admin-login/admin-login.component';
 import { ForgetPasswordComponent } from '../components/forget-password/forget-password.component';
 import { ProfileComponent } from '../components/profile/profile.component';
+import { RegisterSellerComponent } from '../components/register-seller/register-seller.component';
+import { AdminDashboardComponent } from '../components/admin-dashboard/admin-dashboard.component';
+import { LoginSellerComponent } from '../components/login-seller/login-seller.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -32,5 +35,9 @@ export const routes: Routes = [
   { path: 'admin-login', component: AdminLoginComponent },
   { path: 'forget-pass', component: ForgetPasswordComponent },
   { path: 'profile', component: ProfileComponent },
+  {path: 'register-seller',component:RegisterSellerComponent},
+  {path:'admindash',component:AdminDashboardComponent},
+  {path:'seller-login', component:LoginSellerComponent},
   { path: '**', redirectTo: 'admin-login', pathMatch: 'full' },
+  
 ];

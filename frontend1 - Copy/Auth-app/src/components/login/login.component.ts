@@ -3,11 +3,12 @@ import { Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import Swal from 'sweetalert2';
+import { NavbarLogoutComponent } from "../navbar-logout/navbar-logout.component";
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule, NavbarLogoutComponent],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
 })

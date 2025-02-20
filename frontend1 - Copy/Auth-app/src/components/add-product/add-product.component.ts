@@ -4,10 +4,11 @@ import { Product2, Product2Service } from '../../../service/product2.service';
 import { ProductModel } from '../../../model/product';
 import { CardService } from '../../../service/card.service';
 import { Router } from '@angular/router';
+import { NavbarComponent } from "../navbar/navbar.component";
 
 @Component({
   selector: 'app-add-product',
-  imports: [FormsModule],
+  imports: [FormsModule, NavbarComponent],
   templateUrl: './add-product.component.html',
   styleUrl: './add-product.component.css',
 })

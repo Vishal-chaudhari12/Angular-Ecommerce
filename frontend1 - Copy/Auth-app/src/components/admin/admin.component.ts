@@ -3,10 +3,11 @@ import { AdminModel } from '../../../model/admin';
 import { AdminService } from '../../../service/admin.service';
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { NavbarComponent } from "../navbar/navbar.component";
 
 @Component({
   selector: 'app-admin',
-  imports: [FormsModule],
+  imports: [FormsModule, NavbarComponent],
   templateUrl: './admin.component.html',
   styleUrl: './admin.component.css'
 })

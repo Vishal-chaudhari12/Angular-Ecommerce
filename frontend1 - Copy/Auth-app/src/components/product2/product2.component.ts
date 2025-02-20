@@ -5,10 +5,11 @@ import { Router, RouterLink } from '@angular/router';
 import { Product } from '../../../service/product.service';
 
 import { FormsModule } from '@angular/forms';
+import { NavbarComponent } from "../navbar/navbar.component";
 
 @Component({
   selector: 'app-product2',
-  imports: [FormsModule],
+  imports: [FormsModule, NavbarComponent],
   templateUrl: './product2.component.html',
   styleUrl: './product2.component.css'
 })

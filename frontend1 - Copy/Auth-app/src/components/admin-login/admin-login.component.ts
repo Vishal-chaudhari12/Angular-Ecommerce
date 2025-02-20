@@ -1,13 +1,23 @@
+import { animate, style, transition, trigger } from '@angular/animations';
 import { HttpClient } from '@angular/common/http';
 import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import { NavbarLogoutComponent } from "../navbar-logout/navbar-logout.component";
 
 @Component({
   selector: 'app-admin-login',
-  imports: [FormsModule],
+  imports: [FormsModule, NavbarLogoutComponent],
   templateUrl: './admin-login.component.html',
   styleUrl: './admin-login.component.css',
+  animations: [
+    trigger('fadeIn', [
+      transition(':enter', [
+        style({ opacity: 0 }),
+        animate('300ms', style({ opacity: 1 })),
+      ]),
+    ]),
+  ],
 })
 export class AdminLoginComponent {
   adminObj: any = { email: '', password: '' };

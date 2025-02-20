@@ -3,12 +3,13 @@ import { AuthService } from '../../../service/auth.service';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
+import { NavbarLogoutComponent } from "../navbar-logout/navbar-logout.component";
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css'],
-  imports: [FormsModule]
+  imports: [FormsModule, NavbarLogoutComponent]
 })
 export class RegisterComponent {
   user = { name: '', email: '', password: '', conformpassword: '' };
@@ -64,7 +65,7 @@ export class RegisterComponent {
           title: 'Registration Successful!',
           text: 'You have been registered successfully.',
           icon: 'success',
-          timer: 2000,
+          timer: 3000,
           showConfirmButton: false
         });
         this.router.navigate(['/login']);

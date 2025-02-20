@@ -19,6 +19,7 @@ import { AdminDashboardComponent } from '../components/admin-dashboard/admin-das
 import { LoginSellerComponent } from '../components/login-seller/login-seller.component';
 
 export const routes: Routes = [
+
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'user', component: UserComponent },
   { path: 'login', component: LoginComponent },
@@ -35,9 +36,9 @@ export const routes: Routes = [
   { path: 'admin-login', component: AdminLoginComponent },
   { path: 'forget-pass', component: ForgetPasswordComponent },
   { path: 'profile', component: ProfileComponent },
-  {path: 'register-seller',component:RegisterSellerComponent},
-  {path:'admindash',component:AdminDashboardComponent},
-  {path:'seller-login', component:LoginSellerComponent},
+  { path: 'register-seller', component: RegisterSellerComponent },
+  { path: 'admindash', component: AdminDashboardComponent },
+  { path: 'seller-login', component: LoginSellerComponent },
   { path: '**', redirectTo: 'admin-login', pathMatch: 'full' },
   
 ];

@@ -3,11 +3,12 @@ import { Product, ProductService } from '../../../service/product.service';
 import { CardService } from '../../../service/card.service';
 import { PictureSlideComponent } from "../picture-slide/picture-slide.component";
 import { RouterLink } from '@angular/router';
+import { NavbarComponent } from "../navbar/navbar.component";
 
 
 @Component({
   selector: 'app-product',
-  imports: [PictureSlideComponent ,RouterLink],
+  imports: [PictureSlideComponent, RouterLink, NavbarComponent],
   templateUrl: './product.component.html',
   styleUrl: './product.component.css'
 })

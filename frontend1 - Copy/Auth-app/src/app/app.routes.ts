@@ -17,6 +17,10 @@ import { ProfileComponent } from '../components/profile/profile.component';
 import { RegisterSellerComponent } from '../components/register-seller/register-seller.component';
 import { AdminDashboardComponent } from '../components/admin-dashboard/admin-dashboard.component';
 import { LoginSellerComponent } from '../components/login-seller/login-seller.component';
+import { SellerAddProductComponent } from '../components/seller-add-product/seller-add-product.component';
+import { AdminAddProductComponent } from '../components/admin-add-product/admin-add-product.component';
+import { AllSellerListComponent } from '../components/all-seller-list/all-seller-list.component';
+import { DeleteProductComponent } from '../components/delete-product/delete-product.component';
 
 export const routes: Routes = [
 
@@ -39,6 +43,10 @@ export const routes: Routes = [
   { path: 'register-seller', component: RegisterSellerComponent },
   { path: 'admindash', component: AdminDashboardComponent },
   { path: 'seller-login', component: LoginSellerComponent },
-  { path: '**', redirectTo: 'admin-login', pathMatch: 'full' },
+  {path:'seller-product', component:SellerAddProductComponent},
+  // {path:'admin-product',component:AdminAddProductComponent},
+  // { path: '**', redirectTo: 'admin-login', pathMatch: 'full' },
+  {path:"list-seller", component:AllSellerListComponent},
+  {path:'delete-product', component:DeleteProductComponent}
   
 ];

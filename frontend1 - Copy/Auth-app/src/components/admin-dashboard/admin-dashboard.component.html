@@ -1,20 +1,20 @@
-<div class="card" style="width: 12rem;">
-    <div class="card-body">
-      <h5 class="card-title">Add Product</h5>
-      <a href="#" class="btn btn-primary">Go somewhere</a>
-    </div>
+<div class="container mt-4">
+  <h2 class="text-center">Admin Dashboard</h2>
+
+  <!-- Admin Controls -->
+  <div class="admin-controls text-center mb-4">
+    <button class="btn btn-primary m-2" (click)="viewSellers()">List of Sellers</button>
+    <button class="btn btn-success m-2" (click)="addProduct()">Add Product</button>
+    <button class="btn btn-warning m-2" (click)="registerSeller()">Register Seller</button>
   </div>
 
-  <div class="card" style="width: 12rem;">
-    <div class="card-body">
-      <h5 class="card-title">Seller Register</h5>
-      <a href="#" class="btn btn-primary">Go somewhere</a>
+  <!-- Delete Product by ID -->
+  <div class="delete-product mt-4 text-center">
+    <h5>Delete Product by ID</h5>
+    <div class="input-group mx-auto" style="max-width: 400px;">
+      <input type="number" class="form-control" [(ngModel)]="productIdToDelete" placeholder="Enter Product ID">
+      <button class="btn btn-danger" (click)="deleteProduct()">Delete</button>
     </div>
   </div>
-
-  <div class="card" style="width: 12rem;">
-    <div class="card-body">
-      <h5 class="card-title">Seller List</h5>
-      <a href="#" class="btn btn-primary">Go somewhere</a>
-    </div>
-  </div>
+  
+</div>

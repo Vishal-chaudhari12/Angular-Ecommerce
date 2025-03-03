@@ -1,0 +1,38 @@
+<div>
+    <button (click)="getSeller()">List Sellers</button>
+  </div>
+  
+  <div class="row">
+    <div class="col-12">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Password</th>
+            <th>licenceNo</th>
+            <th>MobNo</th>
+            <th>Address</th>
+            
+            <!-- Add more headers as needed -->
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of sellerList; let i = index">
+            <td>{{ i + 1 }}</td>
+            <td>{{ item.id }}</td>
+            <td>{{ item.name }}</td>
+            <td>{{ item.email }}</td>
+            <td>{{ item.password }}</td>
+            <td>{{ item.licenceNo }}</td>
+            <td>{{ item.mobNo }}</td>
+            <td>{{ item.address }}</td>
+            <!-- Add more columns as needed -->
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  

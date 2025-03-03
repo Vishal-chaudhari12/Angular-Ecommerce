@@ -25,6 +25,7 @@ export class AdminComponent {
           } else {
             alert(result.message);
           }
+          
         },
         (error) => {
           console.error('Error admin Saved', error);

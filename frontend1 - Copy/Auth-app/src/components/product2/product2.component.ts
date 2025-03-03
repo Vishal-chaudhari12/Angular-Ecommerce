@@ -5,11 +5,11 @@ import { Router, RouterLink } from '@angular/router';
 import { Product } from '../../../service/product.service';
 
 import { FormsModule } from '@angular/forms';
-import { NavbarComponent } from "../navbar/navbar.component";
+
 
 @Component({
   selector: 'app-product2',
-  imports: [FormsModule, NavbarComponent],
+  imports: [FormsModule],
   templateUrl: './product2.component.html',
   styleUrl: './product2.component.css'
 })
@@ -18,6 +18,7 @@ export class Product2Component {
   products2: Product2[] = [];
  
   Product2: any;
+  productIdToDelete: undefined;
   
     constructor(private product2Service: Product2Service,
       private cartService: CardService
@@ -44,11 +45,14 @@ export class Product2Component {
         name: product2.productName,
         image: product2.productImg,
         price: product2.productPrice,
+        productId:product2.productId,
+        
         id: 0,
         title: '',
         description: '',
         category: '',
         rating: ''
+    
       };
     
       this.cartService.addToCart(product);
@@ -58,6 +62,9 @@ export class Product2Component {
     goToCart(): void {
       this.router.navigate(['/cart']); // Example route navigation
     }
+
+
+    
 
     
 

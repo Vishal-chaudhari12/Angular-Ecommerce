@@ -156,10 +156,10 @@ router.post("/product", async (req, res) => {
   console.log(req, "req at api");
   
   try {
-    let { productName, productImg, productPrice,productDiscription } = req.body;
+    let { productName, productImg, productPrice,productDiscription ,productId} = req.body;
 
     // Create new user with plain text password (not secure for real apps)
-    const product = new Product({ productName, productImg, productPrice,productDiscription });
+    const product = new Product({ productName, productImg, productPrice,productDiscription ,productId});
     console.log(product, "product saved in db");
     
     const result = await product.save();
@@ -167,7 +167,7 @@ router.post("/product", async (req, res) => {
 
     return res.status(201).json({
       message: "Product Saved successfully",
-      product:{productName:result.productName , productImg: result.productImg , productPrice: result.productPrice , productDiscription: result.productDiscription}
+      product:{productName:result.productName , productImg: result.productImg , productPrice: result.productPrice , productDiscription: result.productDiscription, productId:result.productId}
     });
   } catch (error) {
     return res.status(500).json({ message: "Internal server error", error: error.message });
@@ -184,22 +184,21 @@ router.get("/products", async (req, res) => {
   }
 });
 
-router.delete("/product/:productName", async (req, res) => {
+// DELETE: Remove a product by productId
+router.delete("/product/:productId", async (req, res) => {
   try {
-    const { productName } = req.params;
-    
-    // Find and delete the product by name
-    const result = await Product.findOneAndDelete({ productName });
+    const { productId } = req.params;
 
-    if (!result) {
+    const deletedProduct = await Product.findOneAndDelete({ productId: parseInt(productId) });
+
+    if (!deletedProduct) {
       return res.status(404).json({ message: "Product not found" });
     }
 
-    return res.status(200).json({ 
-      message: "Product deleted successfully", 
-      deletedProduct: result 
+    return res.status(200).json({
+      message: "Product deleted successfully",
+      deletedProduct
     });
-
   } catch (error) {
     return res.status(500).json({ message: "Internal server error", error: error.message });
   }

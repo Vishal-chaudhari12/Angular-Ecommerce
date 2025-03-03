@@ -35,7 +35,7 @@ export class AdminLoginComponent {
 
           console.log('redirecting to add-product page');
           localStorage.setItem('loginAdmin', JSON.stringify(res.admin));
-          this.router.navigate(['/add-product']);
+          this.router.navigate(['/admindash']);
 
           alert(res.message); // Show error message from backend
         },

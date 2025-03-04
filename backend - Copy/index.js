@@ -20,7 +20,7 @@ app.use(express.json())
 app.use("/api",router)
 
 mongoose
-  .connect(`mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASS}@cluster0.4bmfh.mongodb.net/Testing?retryWrites=true&w=majority`, {
+  .connect(`mongodb+srv://${process.env.Db_username}:${process.env.Db_pass}@cluster0.4bmfh.mongodb.net/Testing?retryWrites=true&w=majority`, {
     useNewUrlParser: true,
     
   })

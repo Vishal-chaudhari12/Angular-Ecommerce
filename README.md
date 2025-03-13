@@ -1,1 +1,1 @@
-https://angular-front-end-vishal-chuadhris-projects.vercel.app
+https://ecommerce-app-flax-nu.vercel.app/dashboard

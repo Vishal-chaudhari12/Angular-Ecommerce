@@ -1,1 +1,1 @@
-ecommerce-app-flax-nu.vercel.app
+https://ecommerce-app-flax-nu.vercel.app/login

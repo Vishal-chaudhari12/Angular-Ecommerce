@@ -6,6 +6,7 @@ require("dotenv").config();
 const Product= require("../model/product");
 const admin = require("../model/admin");
 const seller = require("../model/seller");
+const card = require("../model/card");
 
 
 
@@ -326,6 +327,52 @@ router.post("/login-seller", async (req, res) => {
     return res.status(500).json({ message: "Internal server error", error: error.message });
   }
 });
+
+//Crads
+router.get('/cart/:userId', async (req, res) => {
+  const cart = await Cart.findOne({ userId: req.params.userId });
+  res.json(cart ? cart.products : []);
+});
+
+// Add to Cart
+router.post('/cart', async (req, res) => {
+  const { userId, product } = req.body;
+  let cart = await Cart.findOne({ userId });
+console.log(card);
+  if (!cart) {
+    cart = new Cart({ userId, products: [] });
+  }
+
+  // Check if product already exists in cart
+  const existingProduct = cart.products.find(p => p.productId === product.productId);
+  if (existingProduct) {
+    existingProduct.quantity += product.quantity;
+  } else {
+    cart.products.push(product);
+  }
+
+  await cart.save();
+  res.json(cart.products);
+});
+
+// Remove from Cart
+// app.delete('/cart/:userId/:productId', async (req, res) => {
+//   const { userId, productId } = req.params;
+//   const cart = await Cart.findOne({ userId });
+
+//   if (cart) {
+//     cart.products = cart.products.filter(p => p.productId !== productId);
+//     await cart.save();
+//   }
+
+//   res.json(cart ? cart.products : []);
+// });
+
+// // Clear Cart
+// app.delete('/cart/:userId', async (req, res) => {
+//   await Cart.findOneAndDelete({ userId: req.params.userId });
+//   res.json({ message: 'Cart cleared' });
+// });
 
 
 module.exports = router;
